@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MChainlink.Core\NChainlink.Core.csproj" />
+    <ProjectReference Include="..\MChainlink.Core\NChainlink.csproj" />
   </ItemGroup>
 
 </Project>
