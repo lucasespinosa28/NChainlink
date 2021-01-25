@@ -7,7 +7,7 @@ namespace MChainlink.Test
 {
     public static class Web3Api
     {
-        public static Web3 Web => new Web3("https://mainnet.infura.io/v3/");
+        public static Web3 Web => new Web3("");
 
     }
 }
