@@ -28,7 +28,7 @@ var lastRoundData = await pricefeed.GetLatestRoundDataAsync();
 //Show the last price.
 Console.WriteLine($"Latest Price { lastRoundData.Answer} of { description }")
 ```
-#### Comple example with Ens and Eth price 
+#### Comple example with domain Ens and price in Eth
 ```C#
 using System;
 using Nethereum.Web3;
