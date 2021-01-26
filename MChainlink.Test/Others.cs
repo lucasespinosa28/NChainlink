@@ -1,59 +1,53 @@
-using Nethereum.Web3;
 using System.Numerics;
-using Xunit;
-using MChainlink;
-using Nethereum.Contracts.ContractHandlers;
-using Nethereum.ENS;
 using System.Threading.Tasks;
+using NChainlink;
+using Xunit;
 
 namespace MChainlink.Test 
 { 
     public class Others
     {
-        public string Address { get; set; } = "0xDC530D9457755926550b59e8ECcdaE7624181557";
-        
         [Fact]
         public async Task Description()
         {
-            var chainLink = new Chainlink(Web3Api.Web, Address);
-            var result = await chainLink.GetDescriptionAsync();
-            Assert.Equal("LINK / ETH", result);
+            var PriceFeed = Web3Api.Web.Chainlink().Pricefeed(Web3Api.Address);
+            var result = await PriceFeed.GetDescriptionAsync();
+            Assert.Equal((string) "LINK / ETH", (string) result);
         }
         [Fact]
         public async Task Decimals()
         {
-            var chainLink = new Chainlink(Web3Api.Web, Address);
-            var result = await chainLink.GetDecimalsAsync();
+             var PriceFeed = Web3Api.Web.Chainlink().Pricefeed(Web3Api.Address);
+            var result = await PriceFeed.GetDecimalsAsync();
             Assert.True(result > 0);
         }
         [Fact]
         public async Task Aggregator()
         {
-            var chainLink = new Chainlink(Web3Api.Web, Address);
-            var result = await chainLink.GetAggregatorAsync();
+             var PriceFeed = Web3Api.Web.Chainlink().Pricefeed(Web3Api.Address);
+            var result = await PriceFeed.GetAggregatorAsync();
             Assert.True(result.Length > 10);
         }
         [Fact]
         public async Task AccessController()
         {
-            var chainLink = new Chainlink(Web3Api.Web, Address);
-            var result = await chainLink.GeAccessControllerAsync();
+             var PriceFeed = Web3Api.Web.Chainlink().Pricefeed(Web3Api.Address);
+            var result = await PriceFeed.GeAccessControllerAsync();
             Assert.True(result.Length > 0);
         }
         [Fact]
         public async Task Owner()
         {
-            var chainLink = new Chainlink(Web3Api.Web, Address);
-            var result = await chainLink.GetOwnerAsync();
+             var PriceFeed = Web3Api.Web.Chainlink().Pricefeed(Web3Api.Address);
+            var result = await PriceFeed.GetOwnerAsync();
             Assert.True(result.Length > 0);
         }
-
         [Fact]
         public async Task Version()
         {
-            var chainLink = new Chainlink(Web3Api.Web, Address);
-            var result = await chainLink.GetVersionAsync();
-            Assert.Equal(3,result);
+             var PriceFeed = Web3Api.Web.Chainlink().Pricefeed(Web3Api.Address);
+            var result = await PriceFeed.GetVersionAsync();
+            Assert.Equal<BigInteger>(3,result);
         }
     }
 }

@@ -1,30 +1,24 @@
-using Nethereum.Web3;
-using System.Numerics;
-using Xunit;
-using MChainlink;
-using Nethereum.Contracts.ContractHandlers;
-using Nethereum.ENS;
 using System.Threading.Tasks;
+using NChainlink;
+using Xunit;
 
 namespace MChainlink.Test
 {
     public class Phases
     {
-        public string Address { get; set; } = "0x6Df09E975c830ECae5bd4eD9d90f3A95a4f88012";
-        
         [Fact]
         public async Task PhaseId()
         {
-            var chainLink = new Chainlink(Web3Api.Web, Address);
-            var result = await chainLink.GetPhaseIdAsync();
-            Assert.Equal(1, result);
+            var PriceFeed = Web3Api.Web.Chainlink().Pricefeed(Web3Api.Address);
+            var Result = await PriceFeed.GetPhaseIdAsync();
+            Assert.Equal(3, Result);
         }
         [Fact]
         public async Task PhaseAggregators()
         {
-            var chainLink = new Chainlink(Web3Api.Web, Address);
-            var result = await chainLink.GetPhaseAggregatorsAsync(1);
-            Assert.Equal("0x42F3b59f72772EB5794B04D2d85aFAC0D30A5683".ToLower(), result);
+            var PriceFeed = Web3Api.Web.Chainlink().Pricefeed(Web3Api.Address);
+            var result = await PriceFeed.GetPhaseAggregatorsAsync(1);
+            Assert.Equal((string) "0xecfa53a8bda4f0c4dd39c55cc8def3757acfdd07", (string) result);
         }
     }
     

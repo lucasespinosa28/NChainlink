@@ -1,21 +1,26 @@
-﻿using System;
-using Nethereum.Contracts.Services;
-using NChainlink;
+﻿using NChainlink.Controllers;
 using Nethereum.Web3;
-using Nethereum.Contracts.ContractHandlers;
-using Nethereum.ENS;
-using System.Threading.Tasks;
 
-namespace MChainlink
+namespace NChainlink
 {
-    public partial class Chainlink 
+    public class ChainlinkOut
     {
-        private Web3 Web3 { get; set; }
-        private string contract { get; set; }
-        public Chainlink(Web3 web3, string contractAddress)
+        public Web3 Web { get; set; }
+    }
+
+    public static class ChainlinkExtension
+    {
+        public static ChainlinkOut Chainlink(this Web3 web)
         {
-            Web3 = web3;
-            contract = contractAddress;
+            return new ChainlinkOut {Web = web};
+        }
+    }
+
+    public static class PriceFeedExtension
+    {
+        public static Pricefeed Pricefeed(this ChainlinkOut web, string address)
+        {
+            return new Pricefeed {Web = web.Web, Contract = address};
         }
     }
 }

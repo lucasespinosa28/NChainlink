@@ -9,9 +9,10 @@
     <Authors>Lucas Espinosa</Authors>
     <Description>Library to accesses chainlink price feed oracle using Nethereum</Description>
     <Copyright>Copyright (c) 2021, lucasespinosa28</Copyright>
-    <PackageLicenseExpression>BSD</PackageLicenseExpression>
+    <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/lucasespinosa28/NChainlink</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lucasespinosa28/NChainlink</RepositoryUrl>
+    <PackageTags>chainlink,nethereum,ethereum</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
