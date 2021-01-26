@@ -7,7 +7,6 @@ NChainlink is let your acesses chainlink smart contracts using nethereum with mi
 ```C#
 using System;
 using Nethereum.Web3;
-using Nethereum.ENS;
 using NChainlink;
 using System.Threading.Tasks;
 
@@ -33,6 +32,7 @@ Console.WriteLine($"Latest Price { lastRoundData.Answer} of { description }")
 ```C#
 using System;
 using Nethereum.Web3;
+using Nethereum.ENS;
 using NChainlink;
 using System.Threading.Tasks;
 
@@ -65,3 +65,9 @@ var LastUpdateDateTime =  DateTimeOffset.FromUnixTimeSeconds(lastRoundData.Updat
 //Show latest name,price and time
 Console.WriteLine($"Description: { description }\nPrice: {LastPriceInEth}\nTime: { LastUpdateDateTime}")
 ```
+
+## Goals
+- [x] Read pricefeed contract
+- [ ] Write pricefeed contract
+- [ ] Read VRF contract
+- [ ] Write VRF contract
