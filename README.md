@@ -7,6 +7,7 @@ NChainlink is let your acesses chainlink smart contracts using nethereum with mi
 ```C#
 using System;
 using Nethereum.Web3;
+using Nethereum.ENS;
 using NChainlink;
 using System.Threading.Tasks;
 
