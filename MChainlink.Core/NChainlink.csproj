@@ -13,6 +13,9 @@
     <PackageProjectUrl>https://github.com/lucasespinosa28/NChainlink</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lucasespinosa28/NChainlink</RepositoryUrl>
     <PackageTags>chainlink,nethereum,ethereum</PackageTags>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

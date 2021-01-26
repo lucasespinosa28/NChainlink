@@ -1,24 +1,23 @@
-﻿using NChainlink.Controllers;
+﻿using System.Threading;
+using NChainlink.Controllers;
 using Nethereum.Web3;
 
 namespace NChainlink
 {
-    public class ChainlinkOut
+
+    public class Chainlink
     {
         public Web3 Web { get; set; }
-    }
 
-    public static class ChainlinkExtension
-    {
-        public static ChainlinkOut Chainlink(this Web3 web)
+        public Chainlink(Web3 web3)
         {
-            return new ChainlinkOut {Web = web};
+            Web = web3;
         }
     }
 
     public static class PriceFeedExtension
     {
-        public static Pricefeed Pricefeed(this ChainlinkOut web, string address)
+        public static Pricefeed Pricefeed(this Chainlink web, string address)
         {
             return new Pricefeed {Web = web.Web, Contract = address};
         }
