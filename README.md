@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 //Ethereum endpoint URL.
 var web3 = new Web3("https://mainnet.infura.io/v3/<KEY>");
 
-//Extend Nethereum.web3 with chainlink . 
-var chainlink = web3.Chainlink();
+//Pass web3 to chainlink to access Ethereum
+var chainlink = new Chainlink(web3);
 
 //Address of price feed oracle.
-var pricefeed = chainlink.Pricefeed("0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419");
+ var pricefeed = chainlink.Pricefeed("0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419");
 
 //Description, this address contract will return Token pair name.
 var description = await pricefeed.GetDescriptionAsync();
