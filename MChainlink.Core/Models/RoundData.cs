@@ -6,10 +6,25 @@ namespace NChainlink.Models
 {
     public partial class Model
     {
-        [Function("getRoundData")]
-        public class RoundData : FunctionMessage
+        [Function("getRoundData", typeof(GetRoundDataOutputDto))]
+        public class GetRoundDataFunction : FunctionMessage
         {
-            [Parameter("uint80", "_roundId")] public BigInteger RoundId { get; set; }
+            [Parameter("uint80", "_roundId")] public virtual BigInteger RoundId { get; set; }
+        }
+
+        [FunctionOutput]
+        public class GetRoundDataOutputDto : IFunctionOutputDTO
+        {
+            [Parameter("uint80", "roundId")] public virtual BigInteger RoundId { get; set; }
+
+            [Parameter("int256", "answer", 2)] public virtual BigInteger Answer { get; set; }
+
+            [Parameter("uint256", "startedAt", 3)] public virtual BigInteger StartedAt { get; set; }
+
+            [Parameter("uint256", "updatedAt", 4)] public virtual BigInteger UpdatedAt { get; set; }
+
+            [Parameter("uint80", "answeredInRound", 5)]
+            public virtual BigInteger AnsweredInRound { get; set; }
         }
     }
 }

@@ -9,34 +9,27 @@ namespace MChainlink.Test
         [Fact]
         public async Task RoundData()
         {
-            var Chainlink = new Chainlink(Web3Api.Web);
+            var Chainlink = new NChainlink.Chainlink(Web3Api.Web);
             var PriceFeed = Chainlink.Pricefeed(Web3Api.Address);
-            var result = await PriceFeed.GetRoundDataAsync("55340232221128658359");
-            Assert.True(result.Answer > 1);
-            Assert.True(result.StartedAt > 1);
-            Assert.True(result.UpdatedAt > 1);
-            Assert.True(result.AnsweredInRound > 1);
-            Assert.True(result.RoundId > 1);
+            var Result = await PriceFeed.GetRoundDataQueryAsync("55340232221128658359");
+            Assert.True(Result.Answer > 1);
+            Assert.True(Result.StartedAt > 1);
+            Assert.True(Result.UpdatedAt > 1);
+            Assert.True(Result.AnsweredInRound > 1);
+            Assert.True(Result.RoundId > 1);
 
         }
-        //[Fact]
-        //public async Task LatestRound()
-        //{
-        //    var PriceFeed = Web3Api.Web.Chainlink().Pricefeed(Web3Api.Address);
-        //    var result = await PriceFeed.GetLatestRoundAsync();
-        //    Assert.True(result > 1);
-        //}
         [Fact]
         public async Task LatestRoundData()
         {
-            var Chainlink = new Chainlink(Web3Api.Web);
+            var Chainlink = new NChainlink.Chainlink(Web3Api.Web);
             var PriceFeed = Chainlink.Pricefeed(Web3Api.Address);
-            var result = await PriceFeed.GetLatestRoundDataAsync();
-            Assert.True(result.Answer > 1);
-            Assert.True(result.StartedAt > 1);
-            Assert.True(result.UpdatedAt > 1);
-            Assert.True(result.AnsweredInRound > 1);
-            Assert.True(result.RoundId > 1);
+            var Result = await PriceFeed.LatestRoundDataQueryAsync();
+            Assert.True(Result.Answer > 1);
+            Assert.True(Result.StartedAt > 1);
+            Assert.True(Result.UpdatedAt > 1);
+            Assert.True(Result.AnsweredInRound > 1);
+            Assert.True(Result.RoundId > 1);
         }
     }
 }

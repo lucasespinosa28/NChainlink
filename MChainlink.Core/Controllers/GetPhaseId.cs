@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using NChainlink.Models;
+using Nethereum.RPC.Eth.DTOs;
 
 namespace NChainlink.Controllers
 {
@@ -8,11 +9,9 @@ namespace NChainlink.Controllers
         /// <summary>
         ///     Return the current phase's ID.
         /// </summary>
-        public async Task<short> GetPhaseIdAsync()
+        public Task<ushort> PhaseIdQueryAsync(Model.PhaseIdFunction phaseIdFunction = null,BlockParameter blockParameter = null)
         {
-            var OwnerOfFunctionMessage = new Model.PhaseId();
-            var OwnerHandler = Web.Eth.GetContractQueryHandler<Model.PhaseId>();
-            return await OwnerHandler.QueryAsync<short>(Contract, OwnerOfFunctionMessage);
+            return ContractHandler.QueryAsync<Model.PhaseIdFunction, ushort>(phaseIdFunction, blockParameter);
         }
     }
 }

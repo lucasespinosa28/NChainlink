@@ -5,8 +5,8 @@ namespace NChainlink.Models
 {
     public partial class Model
     {
-        [Function("aggregator", "address")]
-        public class AggregatorFunction : FunctionMessage
+        [Function("acceptOwnership")]
+        public class AcceptOwnershipFunction : FunctionMessage
         {
         }
     }

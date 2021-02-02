@@ -6,7 +6,7 @@ namespace NChainlink.Models
     public partial class Model
     {
         [Function("version", "uint256")]
-        public class Version : FunctionMessage
+        public class VersionFunction : FunctionMessage
         {
         }
     }

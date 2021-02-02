@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using NChainlink.Models;
+using Nethereum.RPC.Eth.DTOs;
 
 namespace NChainlink.Controllers
 {
@@ -30,12 +31,11 @@ namespace NChainlink.Controllers
         ///         </item>
         ///     </list>
         /// </returns>
-        public async Task<Model.RoundDataOutput> GetLatestRoundDataAsync()
+        public Task<Model.LatestRoundDataOutputDto> LatestRoundDataQueryAsync(BlockParameter blockParameter = null)
         {
-            var RounDataFunctionMessage = new Model.LatestRoundData();
-            var RounDataHandler = Web.Eth.GetContractQueryHandler<Model.LatestRoundData>();
-            return await RounDataHandler.QueryDeserializingToObjectAsync<Model.RoundDataOutput>(RounDataFunctionMessage,
-                Contract);
+            return ContractHandler
+                .QueryDeserializingToObjectAsync<Model.LatestRoundDataFunction, Model.LatestRoundDataOutputDto>(null,
+                    blockParameter);
         }
     }
 }

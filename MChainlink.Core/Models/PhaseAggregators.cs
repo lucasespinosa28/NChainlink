@@ -6,9 +6,9 @@ namespace NChainlink.Models
     public partial class Model
     {
         [Function("phaseAggregators", "address")]
-        public class PhaseAggregators : FunctionMessage
+        public class PhaseAggregatorsFunction : FunctionMessage
         {
-            [Parameter("uint16", "<input>")] public short Input { get; set; }
+            [Parameter("uint16", "")] public virtual ushort ReturnValue1 { get; set; }
         }
     }
 }

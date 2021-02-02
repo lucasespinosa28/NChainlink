@@ -6,7 +6,7 @@ namespace NChainlink.Models
     public partial class Model
     {
         [Function("description", "string")]
-        public class Description : FunctionMessage
+        public class DescriptionFunction : FunctionMessage
         {
         }
     }

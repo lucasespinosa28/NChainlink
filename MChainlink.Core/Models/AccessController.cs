@@ -6,8 +6,15 @@ namespace NChainlink.Models
     public partial class Model
     {
         [Function("accessController", "address")]
-        public class AccessController : FunctionMessage
+        public class AccessControllerFunction : FunctionMessage
         {
+        }
+
+        [Function("setController")]
+        public class SetControllerFunction : FunctionMessage
+        {
+            [Parameter("address", "_accessController")]
+            public virtual string AccessController { get; set; }
         }
     }
 }

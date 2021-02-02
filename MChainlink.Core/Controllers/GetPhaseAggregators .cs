@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using NChainlink.Models;
+using Nethereum.RPC.Eth.DTOs;
 
 namespace NChainlink.Controllers
 {
@@ -8,14 +9,8 @@ namespace NChainlink.Controllers
         /// <summary>
         ///     Return the phase aggregators address
         /// </summary>
-        public async Task<string> GetPhaseAggregatorsAsync(short input)
-        {
-            var PhaseAggregatorsFunctionMessage = new Model.PhaseAggregators
-            {
-                Input = input
-            };
-            var PhaseAggregatorsHandler = Web.Eth.GetContractQueryHandler<Model.PhaseAggregators>();
-            return await PhaseAggregatorsHandler.QueryAsync<string>(Contract, PhaseAggregatorsFunctionMessage);
-        }
+        public Task<string> PhaseAggregatorsQueryAsync(ushort returnValue1, BlockParameter blockParameter = null) =>
+            ContractHandler.QueryAsync<Model.PhaseAggregatorsFunction, string>(new Model.PhaseAggregatorsFunction { ReturnValue1 = returnValue1 },
+                blockParameter);
     }
 }

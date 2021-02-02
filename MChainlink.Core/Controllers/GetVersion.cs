@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using System.Threading.Tasks;
 using NChainlink.Models;
+using Nethereum.RPC.Eth.DTOs;
 
 namespace NChainlink.Controllers
 {
@@ -12,11 +13,10 @@ namespace NChainlink.Controllers
         /// <returns>
         ///     The version number.
         /// </returns>
-        public async Task<BigInteger> GetVersionAsync()
-        {
-            var VersionFunctionMessage = new Model.Version();
-            var VersionHandler = Web.Eth.GetContractQueryHandler<Model.Version>();
-            return await VersionHandler.QueryAsync<BigInteger>(Contract, VersionFunctionMessage);
-        }
+        public Task<BigInteger> VersionQueryAsync(Model.VersionFunction versionFunction,
+            BlockParameter blockParameter = null) =>
+            ContractHandler.QueryAsync<Model.VersionFunction, BigInteger>(versionFunction, blockParameter);
+
+        public Task<BigInteger> VersionQueryAsync(BlockParameter blockParameter = null) => ContractHandler.QueryAsync<Model.VersionFunction, BigInteger>(null, blockParameter);
     }
 }

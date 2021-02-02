@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using NChainlink.Models;
+using Nethereum.RPC.Eth.DTOs;
 
 namespace NChainlink.Controllers
 {
@@ -11,11 +12,9 @@ namespace NChainlink.Controllers
         /// <returns>
         ///     return string with contract owner address
         /// </returns>
-        public async Task<string> GetOwnerAsync()
+        public Task<string> OwnerQueryAsync(BlockParameter blockParameter = null)
         {
-            var OwnerFunctionMessage = new Model.Owner();
-            var OwnerHandler = Web.Eth.GetContractQueryHandler<Model.Owner>();
-            return await OwnerHandler.QueryAsync<string>(Contract, OwnerFunctionMessage);
+            return ContractHandler.QueryAsync<Model.OwnerFunction, string>(null, blockParameter);
         }
     }
 }

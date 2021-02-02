@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using NChainlink.Models;
+using Nethereum.RPC.Eth.DTOs;
 
 namespace NChainlink.Controllers
 {
@@ -11,11 +12,9 @@ namespace NChainlink.Controllers
         /// <returns>
         ///     The number of decimals.
         /// </returns>
-        public async Task<int> GetDecimalsAsync()
+        public Task<byte> DecimalsQueryAsync(BlockParameter blockParameter = null)
         {
-            var DecimalsFunctionMessage = new Model.Decimals();
-            var DecimalsHandler = Web.Eth.GetContractQueryHandler<Model.Decimals>();
-            return await DecimalsHandler.QueryAsync<int>(Contract, DecimalsFunctionMessage);
+            return ContractHandler.QueryAsync<Model.DecimalsFunction, byte>(null, blockParameter);
         }
     }
 }

@@ -6,7 +6,7 @@ namespace NChainlink.Models
     public partial class Model
     {
         [Function("owner", "address")]
-        public class Owner : FunctionMessage
+        public class OwnerFunction : FunctionMessage
         {
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using NChainlink.Models;
+using Nethereum.RPC.Eth.DTOs;
 
 namespace NChainlink.Controllers
 {
@@ -11,11 +12,9 @@ namespace NChainlink.Controllers
         /// <returns>
         ///     the accessController contract address.
         /// </returns>
-        public async Task<string> GeAccessControllerAsync()
+        public Task<string> AccessControllerQueryAsync(BlockParameter blockParameter = null)
         {
-            var AccessControllerFunctionMessage = new Model.AccessController();
-            var AccessControllerHandler = Web.Eth.GetContractQueryHandler<Model.AccessController>();
-            return await AccessControllerHandler.QueryAsync<string>(Contract, AccessControllerFunctionMessage);
+            return ContractHandler.QueryAsync<Model.AccessControllerFunction, string>(null, blockParameter);
         }
     }
 }
