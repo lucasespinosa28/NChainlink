@@ -20,10 +20,10 @@ var chainlink = new Chainlink(web3);
  var pricefeed = chainlink.Pricefeed("0x5f4eC3Df9cbd43714FE2740f5E3616155c5b8419");
 
 //Description, this address contract will return Token pair name.
-var description = await pricefeed.GetDescriptionAsync();
+var description = await pricefeed.DescriptionQueryAsync();
 
 //get all information about the last data.
-var lastRoundData = await pricefeed.GetLatestRoundDataAsync();
+var lastRoundData = await pricefeed.LatestRoundDataQueryAsync();
 
 //Show the last price.
 Console.WriteLine($"Latest Price { lastRoundData.Answer} of { description }")
@@ -52,15 +52,15 @@ var chainlink = new Chainlink(web3);
  var pricefeed = chainlink.Pricefeed(address);
 
 //Description, this address contract will return Token pair name.
-var description = await pricefeed.GetDescriptionAsync();
+var description = await pricefeed.DescriptionQueryAsync();
 
 //get all information about the last data.
-var lastRoundData = await pricefeed.GetLatestRoundDataAsync();
+var lastRoundData = await pricefeed.LatestRoundDataQueryAsync();
 
 //Convert last price in wai to eth
 var LastPriceInEth = Web3.Convert.FromWei(lastRoundData.Answer);
 //Convert unix time to datetime
-var LastUpdateDateTime =  DateTimeOffset.FromUnixTimeSeconds(lastRoundData.UpdatedAt); 
+var LastUpdateDateTime =  DateTimeOffset.FromUnixTimeSeconds((long)lastRoundData.UpdatedAt); 
 
 //Show latest name,price and time
 Console.WriteLine($"Description: { description }\nPrice: {LastPriceInEth}\nTime: { LastUpdateDateTime}")
