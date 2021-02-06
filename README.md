@@ -69,6 +69,7 @@ Console.WriteLine($"Description: { description }\nPrice: {LastPriceInEth}\nTime:
 ## Goals
 - [x] Read pricefeed contract
 - [ ] Write pricefeed contract
+- [ ] Add support to chainlink market
 - [ ] build a website for the documentation
 - [ ] Read VRF contract
 - [ ] Write VRF contract
