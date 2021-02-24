@@ -25,7 +25,6 @@ var description = await pricefeed.GetDescriptionAsync();
 //get all information about the last data.
 var lastRoundData = await pricefeed.GetLatestRoundDataAsync();
 
-
 //Show the last price.
 Console.WriteLine($"Latest Price { lastRoundData.Answer} of { description }");
 ```
