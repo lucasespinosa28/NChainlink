@@ -1,3 +1,4 @@
+using System.Numerics;
 using System.Threading.Tasks;
 using NChainlink;
 using Xunit;
@@ -9,9 +10,9 @@ namespace MChainlink.Test
         [Fact]
         public async Task RoundData()
         {
-            var Chainlink = new NChainlink.Chainlink(Web3Api.Web);
+            var Chainlink = new Chainlink(Web3Api.Web);
             var PriceFeed = Chainlink.Pricefeed(Web3Api.Address);
-            var Result = await PriceFeed.GetRoundDataQueryAsync("55340232221128658359");
+            var Result = await PriceFeed.GetRoundDataAsync(BigInteger.Parse("55340232221128675888"));
             Assert.True(Result.Answer > 1);
             Assert.True(Result.StartedAt > 1);
             Assert.True(Result.UpdatedAt > 1);
@@ -22,9 +23,9 @@ namespace MChainlink.Test
         [Fact]
         public async Task LatestRoundData()
         {
-            var Chainlink = new NChainlink.Chainlink(Web3Api.Web);
+            var Chainlink = new Chainlink(Web3Api.Web);
             var PriceFeed = Chainlink.Pricefeed(Web3Api.Address);
-            var Result = await PriceFeed.LatestRoundDataQueryAsync();
+            var Result = await PriceFeed.GetLatestRoundDataAsync();
             Assert.True(Result.Answer > 1);
             Assert.True(Result.StartedAt > 1);
             Assert.True(Result.UpdatedAt > 1);

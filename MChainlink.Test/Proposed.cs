@@ -1,3 +1,4 @@
+using System.Numerics;
 using System.Threading.Tasks;
 using NChainlink;
 using Xunit;
@@ -9,9 +10,10 @@ namespace MChainlink.Test
         [Fact]
         public async Task ProposedGetRoundData()
         {
-            var Chainlink = new NChainlink.Chainlink(Web3Api.Web);
+
+            var Chainlink = new Chainlink(Web3Api.Web);
             var PriceFeed = Chainlink.Pricefeed(Web3Api.Address);
-            var Result = await PriceFeed.ProposedGetRoundDataQueryAsync("4230");
+            var Result = await PriceFeed.GetProposedGetRoundDataAsync(BigInteger.Parse("5583"));
             Assert.True(Result.Answer > 1);
             Assert.True(Result.StartedAt > 1);
             Assert.True(Result.UpdatedAt > 1);
@@ -21,17 +23,17 @@ namespace MChainlink.Test
         [Fact]
         public async Task ProposedAggregator()
         {
-            var Chainlink = new NChainlink.Chainlink(Web3Api.Web);
+            var Chainlink = new Chainlink(Web3Api.Web);
             var PriceFeed = Chainlink.Pricefeed(Web3Api.Address);
-            var Result = await PriceFeed.ProposedAggregatorQueryAsync();
+            var Result = await PriceFeed.GetProposedAggregatorAsync();
             Assert.NotNull(Result);
         }
         [Fact]
         public async Task ProposedLatestRoundData()
         {
-            var Chainlink = new NChainlink.Chainlink(Web3Api.Web);
+            var Chainlink = new Chainlink(Web3Api.Web);
             var PriceFeed = Chainlink.Pricefeed(Web3Api.Address);
-            var Result = await PriceFeed.ProposedLatestRoundDataQueryAsync();
+            var Result = await PriceFeed.GetProposedLatestRoundDataAsync();
             Assert.True(Result.Answer > 1);
             Assert.True(Result.StartedAt > 1);
             Assert.True(Result.UpdatedAt > 1);

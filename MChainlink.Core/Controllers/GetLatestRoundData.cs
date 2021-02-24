@@ -1,19 +1,20 @@
-﻿using System.Threading.Tasks;
-using NChainlink.Models;
-using Nethereum.RPC.Eth.DTOs;
+﻿using NChainlink.Models;
+using System.Threading.Tasks;
 
 namespace NChainlink.Controllers
 {
     public partial class Pricefeed
     {
         /// <summary>
-        ///     Get the price from the latest round.
+        ///    Get the price from the latest round.
         /// </summary>
         /// <returns>
         ///     <list type="bullet">
         ///         <item>
         ///             <term>roundId</term>
         ///             <description>The round ID.</description>
+        ///         </item> 
+        ///         <item>          
         ///             <term>answer</term>
         ///             <description>The price.</description>
         ///         </item>
@@ -31,11 +32,6 @@ namespace NChainlink.Controllers
         ///         </item>
         ///     </list>
         /// </returns>
-        public Task<Model.LatestRoundDataOutputDto> LatestRoundDataQueryAsync(BlockParameter blockParameter = null)
-        {
-            return ContractHandler
-                .QueryDeserializingToObjectAsync<Model.LatestRoundDataFunction, Model.LatestRoundDataOutputDto>(null,
-                    blockParameter);
-        }
+        public Task<RoundDataOutput> GetLatestRoundDataAsync() => Contract.GetFunction("latestRoundData").CallDeserializingToObjectAsync<RoundDataOutput>();
     }
 }

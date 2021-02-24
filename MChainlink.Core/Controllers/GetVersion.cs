@@ -1,7 +1,4 @@
-﻿using System.Numerics;
-using System.Threading.Tasks;
-using NChainlink.Models;
-using Nethereum.RPC.Eth.DTOs;
+﻿using System.Threading.Tasks;
 
 namespace NChainlink.Controllers
 {
@@ -11,12 +8,8 @@ namespace NChainlink.Controllers
         ///     The version representing the type of aggregator the proxy points to..
         /// </summary>
         /// <returns>
-        ///     The version number.
+        ///     A int with version number.
         /// </returns>
-        public Task<BigInteger> VersionQueryAsync(Model.VersionFunction versionFunction,
-            BlockParameter blockParameter = null) =>
-            ContractHandler.QueryAsync<Model.VersionFunction, BigInteger>(versionFunction, blockParameter);
-
-        public Task<BigInteger> VersionQueryAsync(BlockParameter blockParameter = null) => ContractHandler.QueryAsync<Model.VersionFunction, BigInteger>(null, blockParameter);
+        public Task<int> GetVersionAsync() => Contract.GetFunction("version").CallAsync<int>();
     }
 }

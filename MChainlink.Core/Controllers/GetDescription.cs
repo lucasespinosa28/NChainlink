@@ -1,6 +1,4 @@
 ﻿using System.Threading.Tasks;
-using NChainlink.Models;
-using Nethereum.RPC.Eth.DTOs;
 
 namespace NChainlink.Controllers
 {
@@ -10,11 +8,8 @@ namespace NChainlink.Controllers
         ///     Get the description of the underlying aggregator that the proxy points to.
         /// </summary>
         /// <returns>
-        ///     The description of the underlying aggregator.
+        ///     A string with description of the underlying aggregator.
         /// </returns>
-        public Task<string> DescriptionQueryAsync(BlockParameter blockParameter = null)
-        {
-            return ContractHandler.QueryAsync<Model.DescriptionFunction, string>(null, blockParameter);
-        }
+        public Task<string> GetDescriptionAsync() => Contract.GetFunction("description").CallAsync<string>();
     }
 }

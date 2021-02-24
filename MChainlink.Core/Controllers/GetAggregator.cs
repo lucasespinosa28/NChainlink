@@ -1,6 +1,4 @@
 ﻿using System.Threading.Tasks;
-using NChainlink.Models;
-using Nethereum.RPC.Eth.DTOs;
 
 namespace NChainlink.Controllers
 {
@@ -12,9 +10,6 @@ namespace NChainlink.Controllers
         /// <returns>
         ///     The aggregator address
         /// </returns>
-        public Task<string> AggregatorQueryAsync(BlockParameter blockParameter = null)
-        {
-            return ContractHandler.QueryAsync<Model.AggregatorFunction, string>(null, blockParameter);
-        }
+        public Task<string> GetAggregatorAsync() => Contract.GetFunction("aggregator").CallAsync<string>();
     }
 }
